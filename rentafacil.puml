@@ -1,0 +1,49 @@
+@startuml rentafacil
+
+abstract class Vehiculo {
+  -Placa:
+  -Marca:
+  -Modelo:
+  -Anio:
+  -PrecioPorDia:
+
+  +CalcularCosto(Dias):
+}
+
+class Auto {
+}
+
+class Moto {
+  -Cilindrada:
+}
+
+class Camioneta {
+  -CapacidadCarga:
+}
+
+Vehiculo <|-- Auto
+Vehiculo <|-- Moto
+Vehiculo <|-- Camioneta
+
+class Cliente {
+  -Id:
+  -Nombre:
+  -Dni:
+  -Telefono:
+}
+
+class Alquiler {
+  -Codigo:
+  -FechaInicio:
+  -FechaFin:
+  -CostoTotal:
+  -Estado:
+
+  +CalcularCostoTotal():
+}
+
+Cliente "1" -- "0..3" Alquiler
+Alquiler "1" o-- "1..*" Vehiculo
+
+@enduml
+
